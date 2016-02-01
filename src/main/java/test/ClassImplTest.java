@@ -17,6 +17,6 @@ public class ClassImplTest {
 			Class c = Class.forName(s);
 			System.out.println(TestInterface.class.isAssignableFrom(c));
 			
-			System.out.println("abc");
+			System.out.println("Good");
 	}
 }
