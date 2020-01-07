@@ -1,2 +1,2 @@
-# OnlyTesting
+# Java Test
 My testing program.
