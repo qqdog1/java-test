@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ObjectToObject {
 	private ObjectToObject() {
-		moreToLess();
+//		moreToLess();
 		lessToMore();
 	}
 	
