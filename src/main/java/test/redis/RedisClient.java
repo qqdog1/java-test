@@ -39,7 +39,11 @@ public class RedisClient {
 				listAllKeys();
 			}
 			break;
-		
+		case "get":
+			if(command.length > 1) {
+				getData(command[1]);
+			}
+			break;
 		case "exit":
 			close();
 			break;
@@ -91,6 +95,10 @@ public class RedisClient {
 		for (String key : setKeys) {
             System.out.println(key);
         }
+	}
+	
+	private void getData(String topic) {
+		System.out.println(jedisCluster.get(topic));
 	}
 	
 	private Set<String> getKeys(String pattern) {
