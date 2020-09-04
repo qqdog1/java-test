@@ -6,6 +6,7 @@ package interview.list;
 public class LinkedListQuestions {
 	
 	private LinkedList<String> lst = new LinkedList<>();
+	private DoublyLinkedList<String> doublyLst = new DoublyLinkedList<>();
 	
 	private LinkedListQuestions() {
 		initList();
@@ -17,6 +18,8 @@ public class LinkedListQuestions {
 		lst.makeCycled();
 		
 		isLinkedListCycled();
+		
+		doublyLst.printAll();
 	}
 	
 	private void getMiddleObject() {
@@ -34,6 +37,12 @@ public class LinkedListQuestions {
 		lst.add("d");
 		lst.add("e");
 		lst.add("f");
+		
+		doublyLst.add("a");
+		doublyLst.add("b");
+		doublyLst.add("c");
+		doublyLst.add("d");
+		doublyLst.add("e");
 	}
 	
 	public static void main(String[] s) {
