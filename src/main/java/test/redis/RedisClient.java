@@ -44,6 +44,26 @@ public class RedisClient {
 				getData(command[1]);
 			}
 			break;
+		case "set":
+			if(command.length > 2) {
+				setData(command[1], command[2]);
+			}
+			break;
+		case "hget":
+			if(command.length > 2) {
+				getHashData(command[1], command[2]);
+			}
+			break;
+		case "hgetall":
+			if(command.length > 1) {
+				getAllHashData(command[1]);
+			}
+			break;
+		case "hset":
+			if(command.length > 3) {
+				setHashData(command[1], command[2], command[3]);
+			}
+			break;
 		case "exit":
 			close();
 			break;
@@ -57,9 +77,12 @@ public class RedisClient {
 	}
 	
 	private void connect(String env) {
-		RedisEnv redisEnv = RedisEnv.valueOf(env);
-		if(redisEnv == null) {
+		RedisEnv redisEnv;
+		try {
+			redisEnv = RedisEnv.valueOf(env);
+		} catch(IllegalArgumentException e) {
 			System.out.println("Can't find this environment.");
+			return;
 		}
 		
 		Set<HostAndPort> nodes = new HashSet<>();
@@ -99,6 +122,26 @@ public class RedisClient {
 	
 	private void getData(String topic) {
 		System.out.println(jedisCluster.get(topic));
+	}
+	
+	private void setData(String topic, String value) {
+		jedisCluster.set(topic, value);
+	}
+	
+	private void getHashData(String topic, String key) {
+		System.out.println(jedisCluster.hget(topic, key));
+	}
+	
+	private void getAllHashData(String topic) {
+		Map<String, String> map = jedisCluster.hgetAll(topic);
+		for(String key : map.keySet()) {
+			String value = map.get(key);
+			System.out.println(key + ":" + value);
+		}
+	}
+	
+	private void setHashData(String topic, String key, String value) {
+		jedisCluster.hset(topic, key, value);
 	}
 	
 	private Set<String> getKeys(String pattern) {
