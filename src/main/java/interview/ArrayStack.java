@@ -39,9 +39,9 @@ public class ArrayStack<T> {
 	public void push(T t) {
 		if(t != null) {
 			T[] newArray = (T[]) new Object[array.length + 1];
-			for(int i = 0 ; i < array.length; i++) {
-				newArray[i] = array[i];
-			}
+			
+			System.arraycopy(array, 0, newArray, 0, array.length);
+			
 			newArray[array.length] = t;
 			array = newArray;
 		}
