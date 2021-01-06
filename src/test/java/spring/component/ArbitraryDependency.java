@@ -2,7 +2,7 @@ package spring.component;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value="arbitraryDependency")
 public class ArbitraryDependency {
 
     private final String label = "Arbitrary Dependency";
