@@ -6,8 +6,8 @@ import java.lang.management.OperatingSystemMXBean;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
-import com.codahale.metrics.JmxReporter;
-import com.codahale.metrics.MetricRegistry;
+//import com.codahale.metrics.JmxReporter;
+//import com.codahale.metrics.MetricRegistry;
 
 public class JMXTestMain {
 
