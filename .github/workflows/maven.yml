@@ -32,3 +32,7 @@ jobs:
           working-directory: /home/ec2-user/sbbet
           command: /bin/sh deploy.sh
           comment: Deploy to ec2!
+      
+      # Catch SSM outputs
+      - name: Get the outputs
+        run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
