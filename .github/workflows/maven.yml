@@ -18,4 +18,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo "Log level: ${{ secrets.test_abc }}"
+        TATA = ${{ secrets.test_abc }}
+        echo "Log level: ${{ TATA }}"
