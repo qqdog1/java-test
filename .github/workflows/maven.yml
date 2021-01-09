@@ -14,9 +14,21 @@ on:
         description: 'Test scenario tags'  
 
 jobs:
-  printInputs:
+  start:
     runs-on: ubuntu-latest
+
     steps:
-    - run: |
-        TATA = ${{ secrets.test_abc }} |
-        echo "Log level: ${{ TATA }}"
+      - uses: actions/checkout@v2
+
+      - name: AWS SSM Send-Command
+        uses: peterkimzz/aws-ssm-send-command@master
+        id: ssm
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          instance-ids: ${{ secrets.INSTANCE_ID }}
+
+          working-directory: /home/ec2-user/sbbet
+          command: /bin/sh deploy.sh
+          comment: Deploy to ec2!
